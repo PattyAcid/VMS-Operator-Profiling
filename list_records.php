@@ -36,6 +36,10 @@ include("header.php"); // Include the common header
             <th>Current Address</th>
             <th>Degree</th>
             <th>Date of Hired</th>
+            <th>Contact Number</th>
+            <th>Job Designation</th>
+            <th>Job Description</th>
+            <th>Job Area</th>
             <th>Actions</th>
         </tr>
         
@@ -54,6 +58,10 @@ include("header.php"); // Include the common header
             echo "<td>" . $row['current_address'] . "</td>";
             echo "<td>" . $row['degree'] . "</td>";
             echo "<td>" . $row['date_of_hired'] . "</td>";
+            echo "<td>" . $row['contact_number'] . "</td>";
+            echo "<td>" . $row['job_designation'] . "</td>";
+            echo "<td>" . $row['job_description'] . "</td>";
+            echo "<td>" . $row['job_area'] . "</td>";
             echo "<td>";
             echo "<a href='edit_record.php?id=" . $row['id'] . "'>Edit</a> | ";
             echo "<a href='list_records.php?delete_id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this record?\")'>Delete</a>";
