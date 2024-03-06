@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 01, 2024 at 01:33 AM
+-- Generation Time: Mar 06, 2024 at 03:05 AM
 -- Server version: 5.1.32
 -- PHP Version: 5.2.9-1
 
@@ -53,21 +53,26 @@ INSERT INTO `list_records` (`id`, `name_id`, `name`, `gender`, `date_of_birth`, 
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NOT NULL,
-  `user_name` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `user_name` (`user_name`),
-  KEY `password` (`password`),
-  KEY `date` (`date`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password_hash` varchar(255) NOT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `gender` enum('Male','Female','Other') DEFAULT NULL,
+  `email_verified` tinyint(1) DEFAULT '0',
+  `account_status` enum('Active','Disabled','Banned') DEFAULT 'Active',
+  `registration_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_login_date` datetime DEFAULT NULL,
+  `profile_picture` varchar(255) DEFAULT NULL,
+  `biography` text,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_id`, `user_name`, `password`, `date`) VALUES
-(1, 9223372036854775807, 'admin', 'admin', '2024-02-29 10:59:46');
